@@ -1,0 +1,11 @@
+.navbar {
+  @apply bg-gradient-to-r from-purple-900/90 to-indigo-900/90 backdrop-blur-sm shadow-lg;
+}
+
+.nav-link {
+  @apply flex items-center space-x-2 text-gray-100 hover:text-indigo-200 transition duration-200;
+}
+
+.logout-button {
+  @apply flex items-center space-x-2 text-red-300 hover:text-red-200 transition duration-200;
+}

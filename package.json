@@ -1,0 +1,16 @@
+{
+    "name": "GitHub",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\""
+    },
+    "devDependencies": {
+        "concurrently": "^9.0.1"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "jsonwebtoken": "^9.0.2",
+        "nodemailer": "^6.9.16"
+    }
+}
