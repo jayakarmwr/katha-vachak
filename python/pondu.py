@@ -11,7 +11,7 @@ CORS(app)  # Enable CORS for all routes
 # CORS(app, origins=["http://localhost:5173"])
 
 API_URL = "https://api-inference.huggingface.co/models/ZB-Tech/Text-to-Image"
-headers = {"Authorization": "Bearer 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"}
+headers = {"Authorization": "Bearer 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"}
 
 def query(prompt):
     response = requests.post(API_URL, headers=headers, json={"inputs": prompt})

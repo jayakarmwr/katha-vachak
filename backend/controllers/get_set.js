@@ -333,5 +333,20 @@ const getlikedstories=async(req,res)=>
     }
   };
 
-module.exports={login,signup,confirmPassword,changePassword,getProfile,savestory,storyHistory,getStoryById,setlike,getlikedstories,setdislike,submitFeedback};
+  const deleteStory = async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const deletedStory = await Story.findByIdAndDelete(id);
+      if (!deletedStory) {
+        return res.status(404).json({ message: "Story not found" });
+      }
+      res.status(200).json({ message: "Story deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting story:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };
+
+module.exports={login,signup,confirmPassword,changePassword,getProfile,savestory,storyHistory,getStoryById,setlike,getlikedstories,setdislike,submitFeedback,deleteStory};
   
