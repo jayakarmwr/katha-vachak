@@ -37,14 +37,14 @@ function StoryDisplay() {
     if (!input) return;
 
     const pdf = new jsPDF("p", "mm", "a4");
-    const canvas = await html2canvas(input, { scale: 2 });
+    const canvas = await html2canvas(input, { scale: 1.5 });
 
-    const imgData = canvas.toDataURL("image/png");
+    const imgData = canvas.toDataURL("image/jpeg");
     const imgProps = pdf.getImageProperties(imgData);
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
     pdf.save(`${story?.title || "story"}.pdf`);
   };
 
