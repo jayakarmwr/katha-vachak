@@ -326,5 +326,27 @@ const getlikedstories=async(req,res)=>
     }
   };
 
+  const submitFeedback = async (req, res) => {
+    const { email, feedback, rating } = req.body;
+
+    if (!feedback) {
+      return res.status(400).json({ msg: "Email and feedback are required." });
+    }
+
+    try {
+    // Save feedback to the database
+      const newFeedback = new Feedback({
+        email,
+        feedback,
+        rating, // Optional: Include rating if provided
+      });
+
+      await newFeedback.save();
+      res.status(200).json({ msg: "Feedback submitted successfully." });
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      res.status(500).json({ msg: "Server error." });
+    }
+  };
 module.exports={login,signup,confirmPassword,changePassword,getProfile,savestory,storyHistory,getStoryById,setlike,getlikedstories,setdislike,submitFeedback,deleteStory};
   
